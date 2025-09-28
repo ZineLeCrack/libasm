@@ -1,6 +1,7 @@
 section .text
 global ft_strdup
 extern ft_strlen
+extern ft_strcpy
 extern malloc
 
 ft_strdup:
@@ -11,14 +12,9 @@ ft_strdup:
 	call malloc
 	cmp rax, 0
 	je .end
-	xor rcx, rcx
-	.loop:
-		mov dl, byte [rbx + rcx]
-		mov byte [rax + rcx], dl
-		cmp dl, 0
-		je .end
-		inc rcx
-		jmp .loop
+	mov rdi, rax
+	mov rsi, rbx
+	call ft_strcpy
 	.end:
 		ret
 

@@ -1,8 +1,5 @@
 section .text
 global ft_strcpy
-; rdi = adresse de la première chaîne (dest)
-; rsi = adresse de la deuxième chaîne (src)
-; rax = valeur de retour
 
 ft_strcpy:
 	mov rax, rdi

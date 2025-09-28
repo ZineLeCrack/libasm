@@ -8,9 +8,9 @@ ft_read:
 	cmp rax, 0
 	jge .end
 	neg rax
-	mov rdi, rax
+	mov rbx, rax
 	call __errno_location
-	mov [rax], edi
+	mov [rax], ebx
 	mov rax, -1
 	.end:
 		ret

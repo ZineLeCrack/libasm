@@ -2,6 +2,8 @@ section .text
 global ft_strcmp
 
 ft_strcmp:
+	xor rax, rax
+	xor rbx, rbx
 	.loop:
 		mov al, byte [rdi]
 		mov bl, byte [rsi]
@@ -13,11 +15,9 @@ ft_strcmp:
 		inc rsi
 		jmp .loop
 	.equal:
-		xor eax, eax
+		xor al, al
 		ret
 	.end:
-		movzx eax, al
-		movzx ebx, bl
 		sub eax, ebx
 		ret
 

@@ -1,7 +1,5 @@
 section .text
 global ft_strlen
-; rdi = adresse de la chaîne
-; rax = compteur (longueur)
 
 ft_strlen:
 	xor rax, rax
