@@ -13,11 +13,15 @@ MAIN = main.c
 AR = ar rcs
 
 OBJS = $(SRCS:.s=.o)
+MAIN_OBJ = $(MAIN:.c=.o)
 
-all: $(NAME)
+all: $(NAME) $(EXEC_NAME)
 
 $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
+
+$(EXEC_NAME): $(MAIN_OBJ)
+	$(CC) $(CFLAGS) $(MAIN_OBJ) $(NAME) -o $(EXEC_NAME)
 
 %.o: %.s
 	$(NASM) $(NASMFLAGS) -o $@ $<
@@ -27,6 +31,7 @@ main: all
 
 clean:
 	$(RM) $(OBJS)
+	$(RM) $(MAIN_OBJ)
 
 fclean: clean
 	$(RM) $(NAME)
