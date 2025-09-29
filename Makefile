@@ -5,7 +5,7 @@ CC = cc
 NASM = nasm
 
 NASMFLAGS = -f elf64
-CFLAGS = -Wall -Wextra -Werror -no-pie
+CFLAGS = -Wall -Wextra -Werror
 
 SRCS = ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s ft_read.s ft_strdup.s
 MAIN = main.c
@@ -21,7 +21,7 @@ $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
 
 $(EXEC_NAME): $(MAIN_OBJ)
-	$(CC) $(CFLAGS) $(MAIN_OBJ) $(NAME) -o $(EXEC_NAME)
+	$(CC) $(CFLAGS) -L. -Ilibasm $(MAIN_OBJ) $(NAME) -o $(EXEC_NAME)
 
 %.o: %.s
 	$(NASM) $(NASMFLAGS) -o $@ $<
